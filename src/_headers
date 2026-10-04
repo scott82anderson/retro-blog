@@ -1,0 +1,4 @@
+# Cloudflare Pages response headers (Netlify uses netlify.toml instead).
+# eleventy-img filenames are content-hashed, so they can be cached forever.
+/img/*
+  Cache-Control: public, max-age=31536000, immutable

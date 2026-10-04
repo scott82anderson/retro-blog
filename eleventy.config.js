@@ -21,6 +21,7 @@ export default function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({ "src/assets/css": "assets/css" });
 	eleventyConfig.addPassthroughCopy({ "src/assets/img/static": "assets/img" });
 	eleventyConfig.addPassthroughCopy({ "src/assets/favicon.svg": "favicon.svg" });
+	eleventyConfig.addPassthroughCopy({ "src/_headers": "_headers" });
 	eleventyConfig.addWatchTarget("src/assets/css/");
 
 	// Drafts render during `npm run dev` but are left out of production builds.

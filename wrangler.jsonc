@@ -1,0 +1,10 @@
+// Cloudflare Workers static-assets config: serves the Eleventy build in _site/.
+// Response headers come from src/_headers (copied to _site/_headers).
+{
+	"name": "retro-blog",
+	"compatibility_date": "2026-10-05",
+	"assets": {
+		"directory": "./_site",
+		"not_found_handling": "404-page"
+	}
+}
