@@ -1,0 +1,23 @@
+{
+  "name": "my-blog",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "eleventy --serve --quiet",
+    "build": "rm -rf _site && eleventy",
+    "new": "node scripts/new-post.js",
+    "clean": "rm -rf _site .cache"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy-img": "^7.0.0",
+    "@11ty/eleventy-plugin-rss": "^3.1.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "luxon": "^3.7.2",
+    "markdown-it-anchor": "^10.0.0",
+    "pagefind": "^1.5.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

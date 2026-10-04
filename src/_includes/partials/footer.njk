@@ -1,0 +1,24 @@
+<footer class="site-footer">
+	{% include "partials/stripes.njk" %}
+	<div class="site-footer__inner">
+		<div class="site-footer__about">
+			<p class="site-footer__title"><a href="/">{{ site.title }}</a></p>
+			<p>{{ site.tagline }}. Written and typeset in {{ site.author.location }}.</p>
+		</div>
+		<nav class="site-footer__links" aria-label="Footer">
+			<ul>
+				<li><a href="/archive/">Archive</a></li>
+				<li><a href="/tags/">Tags</a></li>
+				<li><a href="/search/">Search</a></li>
+				<li><a href="/about/">About</a></li>
+			</ul>
+			<ul>
+				<li><a href="/feed.xml">RSS feed</a></li>
+				<li><a href="/llms.txt">llms.txt</a></li>
+				<li><a href="{{ site.links.linkedin }}" rel="me">LinkedIn</a></li>
+				<li><a href="{{ site.links.book }}">The book</a></li>
+			</ul>
+		</nav>
+	</div>
+	<p class="site-footer__legal">© {{ build.date | readableDate("yyyy") }} {{ site.author.name }}. All rights reserved. No cassettes were harmed.</p>
+</footer>

@@ -1,0 +1,19 @@
+---
+layout: layouts/base.njk
+title: Tags
+description: Browse articles by topic.
+permalink: /tags/
+---
+<div class="listing">
+	<header class="page__header">
+		<h1 class="page__title">Topics</h1>
+		<p class="page__standfirst">Browse by subject. The number is how many articles carry each tag.</p>
+	</header>
+	<ul class="tag-index">
+	{%- for t in collections.tagList %}
+		<li><a class="sticker sticker--{{ loop.index0 % 4 }}" href="/tags/{{ t.slug }}/">{{ t.tag }} <span class="tag-index__count">{{ t.count }}</span></a></li>
+	{%- else %}
+		<li>No tags yet.</li>
+	{%- endfor %}
+	</ul>
+</div>

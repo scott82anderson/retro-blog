@@ -1,0 +1,8 @@
+{%- set shownTags = tagsToShow | visibleTags -%}
+{%- if shownTags.length %}
+<ul class="stickers" aria-label="Tags">
+	{%- for tag in shownTags %}
+	<li><a class="sticker sticker--{{ loop.index0 % 4 }}" href="/tags/{{ tag | slugify }}/" rel="tag" data-pagefind-filter="tag">{{ tag }}</a></li>
+	{%- endfor %}
+</ul>
+{%- endif %}

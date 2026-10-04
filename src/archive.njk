@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+title: Archive
+description: Every article, newest first, grouped by year and month.
+schemaKind: collection
+permalink: /archive/
+---
+<div class="listing">
+	<header class="page__header">
+		<h1 class="page__title">The archive</h1>
+		<p class="page__standfirst">Every article since issue one, newest first. {{ collections.posts.length }} in total.</p>
+	</header>
+	{%- for year in collections.archive %}
+	<section class="archive-year" aria-labelledby="year-{{ year.year }}">
+		<h2 id="year-{{ year.year }}" class="archive-year__title">{{ year.year }} <span>{{ year.count }} article{{ "s" if year.count != 1 }}</span></h2>
+		{%- for month in year.months %}
+		<h3 class="archive-month">{{ month.label }}</h3>
+		<ol class="archive-list">
+			{%- for post in month.posts %}
+			<li>
+				<time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate("dd") }}</time>
+				<a href="{{ post.url }}">{{ post.data.title }}</a>
+			</li>
+			{%- endfor %}
+		</ol>
+		{%- endfor %}
+	</section>
+	{%- else %}
+	<p>No articles yet.</p>
+	{%- endfor %}
+</div>

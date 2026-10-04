@@ -1,0 +1,20 @@
+{#- One row in a contents listing. Expects `post`. Numbered from the first ever article. -#}
+{%- set number = collections.posts.length - collections.posts.indexOf(post) -%}
+<article class="entry{% if post.data.coverSrc %} entry--has-image{% endif %}">
+	<p class="entry__number" aria-hidden="true">{{ number | pad }}</p>
+	<div class="entry__body">
+		<p class="entry__meta">
+			<time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate("d LLL yyyy") }}</time>
+			<span>{{ post.content | readingTime }} min read</span>
+		</p>
+		<h2 class="entry__title"><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+		<p class="entry__description">{{ post.data.description }}</p>
+		{%- set tagsToShow = post.data.tags %}
+		{% include "partials/tags.njk" %}
+	</div>
+	{%- if post.data.coverSrc %}
+	<a class="entry__image" href="{{ post.url }}" tabindex="-1" aria-hidden="true">
+		<img src="{{ post.data.coverSrc }}" alt="" sizes="(min-width: 50rem) 16rem, 40vw" eleventy:widths="320,640">
+	</a>
+	{%- endif %}
+</article>

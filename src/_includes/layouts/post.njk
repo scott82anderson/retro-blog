@@ -1,0 +1,85 @@
+---
+layout: layouts/base.njk
+schemaKind: post
+bodyClass: is-post
+---
+{%- set shownTags = tags | visibleTags -%}
+{%- set minutes = content | readingTime -%}
+<article class="post" data-pagefind-body>
+	<header class="post__header">
+		{%- if shownTags.length %}
+		<p class="post__kicker"><a href="/tags/{{ shownTags[0] | slugify }}/">{{ shownTags[0] }}</a></p>
+		{%- endif %}
+		<h1 class="post__title">{{ title }}</h1>
+		<p class="post__standfirst">{{ description }}</p>
+		<p class="post__byline">
+			<span>By <a href="/about/" rel="author">{{ site.author.name }}</a></span>
+			<time datetime="{{ page.date | isoDate }}" data-pagefind-meta="date:{{ page.date | isoDate }}" data-pagefind-sort="date:{{ page.date | isoDate }}">{{ page.date | readableDate }}</time>
+			{%- if updated %}
+			<span>Updated <time datetime="{{ updated | isoDate }}">{{ updated | readableDate }}</time></span>
+			{%- endif %}
+			<span>{{ minutes }} min read</span>
+		</p>
+	</header>
+
+	{%- if coverSrc %}
+	<figure class="post__cover">
+		<img src="{{ coverSrc }}" alt="{{ imageAlt }}" loading="eager" fetchpriority="high" sizes="(min-width: 75rem) 72rem, 100vw" data-pagefind-meta="image[src], image_alt[alt]">
+		{%- if imageCaption %}<figcaption>{{ imageCaption }}</figcaption>{% endif %}
+	</figure>
+	{%- endif %}
+
+	<div class="post__body">
+		{%- if summary %}
+		<aside class="tldr" aria-labelledby="tldr-heading">
+			<h2 id="tldr-heading" class="tldr__title">Key points</h2>
+			<ul>
+			{%- for point in summary %}
+				<li>{{ point }}</li>
+			{%- endfor %}
+			</ul>
+		</aside>
+		{%- endif %}
+
+		<div class="prose">
+{{ content | safe }}
+		</div>
+
+		{%- if faq %}
+		<section class="faq" aria-labelledby="faq-heading">
+			<h2 id="faq-heading">Questions &amp; answers</h2>
+			{%- for item in faq %}
+			<div class="faq__item">
+				<h3>{{ item.q }}</h3>
+				<p>{{ item.a }}</p>
+			</div>
+			{%- endfor %}
+		</section>
+		{%- endif %}
+
+		<footer class="post__footer">
+			{%- set tagsToShow = tags %}
+			{% include "partials/tags.njk" %}
+			{% include "partials/author-box.njk" %}
+		</footer>
+	</div>
+</article>
+
+{%- set newer = collections.posts | nextPost(page.url) %}
+{%- set older = collections.posts | previousPost(page.url) %}
+{%- if newer or older %}
+<nav class="post-nav" aria-label="More articles">
+	{%- if older %}
+	<a class="post-nav__link post-nav__link--older" href="{{ older.url }}" rel="prev">
+		<span class="post-nav__label">Previous article</span>
+		<span class="post-nav__title">{{ older.data.title }}</span>
+	</a>
+	{%- endif %}
+	{%- if newer %}
+	<a class="post-nav__link post-nav__link--newer" href="{{ newer.url }}" rel="next">
+		<span class="post-nav__label">Next article</span>
+		<span class="post-nav__title">{{ newer.data.title }}</span>
+	</a>
+	{%- endif %}
+</nav>
+{%- endif %}

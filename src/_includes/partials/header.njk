@@ -1,0 +1,39 @@
+{%- set isHome = page.url == "/" -%}
+{%- set titleWords = site.title.split(" ") -%}
+{%- set titleHtml -%}{% for w in titleWords %}{% if loop.last and not loop.first %}<span class="masthead__accent">{{ w }}</span>{% else %}{{ w }} {% endif %}{% endfor %}{%- endset -%}
+<header class="site-header">
+	<div class="topbar-wrap">
+	<div class="topbar">
+		<p class="topbar__issue">
+			<span>Issue {{ collections.posts.length | pad(3) }}</span>
+			<span class="topbar__date">{{ build.date | readableDate("LLLL yyyy") }}</span>
+		</p>
+		<nav class="topbar__nav" aria-label="Main">
+			<ul>
+			{%- for item in site.nav %}
+				{%- set active = (page.url == item.url) or (item.url != "/" and page.url.startsWith(item.url)) %}
+				<li><a href="{{ item.url }}"{% if active %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+			{%- endfor %}
+			</ul>
+		</nav>
+		<form class="topbar__search" action="/search/" method="get" role="search">
+			<label for="site-search" class="visually-hidden">Search articles</label>
+			<input id="site-search" type="search" name="q" placeholder="Search…" autocomplete="off">
+			<button type="submit">Go</button>
+		</form>
+	</div>
+	</div>
+
+	<div class="masthead{% if isHome %} masthead--cover{% endif %}">
+		{%- if isHome %}
+		<h1 class="masthead__title"><a href="/">{{ titleHtml | safe }}</a></h1>
+		{%- else %}
+		<p class="masthead__title"><a href="/">{{ titleHtml | safe }}</a></p>
+		{%- endif %}
+		<p class="masthead__tagline">{{ site.tagline }}</p>
+		{% include "partials/stripes.njk" %}
+		{%- if isHome %}
+		<p class="masthead__flash" aria-hidden="true"><span>Free</span><span>every issue</span></p>
+		{%- endif %}
+	</div>
+</header>

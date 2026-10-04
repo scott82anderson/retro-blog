@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+title: Search
+description: Search every article on the site.
+noindex: true
+permalink: /search/
+---
+<div class="listing search-page">
+	<header class="page__header">
+		<h1 class="page__title">Search</h1>
+		<p class="page__standfirst">Find any article by keyword. Filter results by tag.</p>
+	</header>
+	<div id="search" class="search-ui">
+		<noscript><p>Search needs JavaScript. You can also browse the <a href="/archive/">archive</a> or <a href="/tags/">tags</a>.</p></noscript>
+	</div>
+</div>
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css">
+<script src="/pagefind/pagefind-ui.js"></script>
+<script>
+	window.addEventListener("DOMContentLoaded", () => {
+		const ui = new PagefindUI({
+			element: "#search",
+			showSubResults: true,
+			showImages: false,
+			autofocus: true,
+			translations: { placeholder: "Type to search…", zero_results: "No articles match [SEARCH_TERM]. Try another word." },
+		});
+		const q = new URLSearchParams(window.location.search).get("q");
+		if (q) ui.triggerSearch(q);
+	});
+</script>

@@ -1,0 +1,80 @@
+---
+layout: layouts/base.njk
+schemaKind: collection
+bodyClass: is-home
+pagination:
+  data: collections.posts
+  size: 10
+  alias: posts
+permalink: "{% if pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber + 1 }}/{% else %}/{% endif %}"
+eleventyComputed:
+  title: "{% if pagination.pageNumber > 0 %}Back issues, page {{ pagination.pageNumber + 1 }}{% endif %}"
+  prevPageUrl: "{{ pagination.href.previous or '' }}"
+  nextPageUrl: "{{ pagination.href.next or '' }}"
+---
+{%- if not posts.length %}
+<section class="empty">
+	<h2>Nothing in this issue yet</h2>
+	<p>The first article is on its way. Run <code>npm run new "My first post"</code> to write it.</p>
+</section>
+{%- else %}
+
+{%- if pagination.pageNumber == 0 %}
+{%- set cover = posts[0] %}
+<section class="cover{% if not cover.data.coverSrc %} cover--type-only{% endif %}" aria-labelledby="cover-title">
+	<div class="cover__text">
+		<p class="cover__label">Cover story</p>
+		<h2 id="cover-title" class="cover__title"><a href="{{ cover.url }}">{{ cover.data.title }}</a></h2>
+		<p class="cover__standfirst">{{ cover.data.description }}</p>
+		<p class="cover__meta">
+			<time datetime="{{ cover.date | isoDate }}">{{ cover.date | readableDate }}</time>
+			<span>{{ cover.content | readingTime }} min read</span>
+		</p>
+		<a class="button" href="{{ cover.url }}">Read the article</a>
+	</div>
+	{%- if cover.data.coverSrc %}
+	<a class="cover__image" href="{{ cover.url }}" tabindex="-1" aria-hidden="true">
+		<img src="{{ cover.data.coverSrc }}" alt="" loading="eager" fetchpriority="high" sizes="(min-width: 64rem) 40rem, 100vw">
+	</a>
+	{%- endif %}
+	{%- if not cover.data.coverSrc %}
+	<p class="cover__numeral" aria-hidden="true">{{ collections.posts.length | pad }}</p>
+	{%- endif %}
+	{%- if posts.length > 1 %}
+	<div class="cover__lines">
+		<p class="cover__lines-title">Also inside</p>
+		<ul>
+		{%- for post in posts | head(4) %}{% if not loop.first %}
+			<li><a href="{{ post.url }}">{{ post.data.title }}</a></li>
+		{%- endif %}{% endfor %}
+		</ul>
+	</div>
+	{%- endif %}
+</section>
+{%- endif %}
+
+<section class="contents" aria-labelledby="contents-title">
+	<header class="section-head">
+		<h2 id="contents-title">{{ "In this issue" if pagination.pageNumber == 0 else ("Back issues · page " + (pagination.pageNumber + 1)) }}</h2>
+		<a href="/archive/">Full archive</a>
+	</header>
+	<div class="contents__list">
+	{%- for post in posts %}
+		{%- if not (pagination.pageNumber == 0 and loop.first) %}
+		{% include "partials/entry.njk" %}
+		{%- endif %}
+	{%- endfor %}
+	</div>
+	{%- if pagination.pageNumber == 0 and posts.length == 1 %}
+	<p class="contents__empty">That's the whole issue so far. More soon.</p>
+	{%- endif %}
+</section>
+
+{%- if pagination.href.previous or pagination.href.next %}
+<nav class="pager" aria-label="Pages">
+	{%- if pagination.href.previous %}<a href="{{ pagination.href.previous }}" rel="prev">Newer</a>{% else %}<span></span>{% endif %}
+	<span class="pager__status">Page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}</span>
+	{%- if pagination.href.next %}<a href="{{ pagination.href.next }}" rel="next">Older</a>{% else %}<span></span>{% endif %}
+</nav>
+{%- endif %}
+{%- endif %}

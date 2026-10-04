@@ -1,0 +1,25 @@
+---
+layout: layouts/base.njk
+schemaKind: tag
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tagItem
+permalink: "/tags/{{ tagItem.slug }}/"
+eleventyComputed:
+  title: "Articles tagged “{{ tagItem.tag }}”"
+  description: "All {{ tagItem.count }} article{% if tagItem.count != 1 %}s{% endif %} by Scott Anderson about {{ tagItem.tag }}, newest first."
+---
+{%- set tagged = collections.posts | postsWithTag(tagItem.tag) -%}
+<div class="listing">
+	<header class="page__header">
+		<p class="page__kicker"><a href="/tags/">All topics</a></p>
+		<h1 class="page__title">{{ tagItem.tag }}</h1>
+		<p class="page__standfirst">{{ tagged.length }} article{{ "s" if tagged.length != 1 }} on this topic, newest first.</p>
+	</header>
+	<div class="contents__list">
+	{%- for post in tagged %}
+		{% include "partials/entry.njk" %}
+	{%- endfor %}
+	</div>
+</div>
