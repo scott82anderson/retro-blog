@@ -55,4 +55,4 @@ Style: Australian English, first person, direct answer in the opening paragraph,
 
 Canonical, Open Graph and Twitter cards, `article:*` meta, JSON-LD (WebSite + SearchAction, Person, BlogPosting, BreadcrumbList, FAQPage, ProfilePage, CollectionPage), sitemap.xml, robots.txt (allows AI crawlers), Atom feed, llms.txt and llms-full.txt, responsive images with dimensions, single h1 per page.
 
-**Before going live:** set the real domain in `src/_data/site.js` (`url`). On Netlify the `URL` env var is used automatically.
+The site URL is `https://scottanderson.com.au`, set in `src/_data/site.js` (`url`).

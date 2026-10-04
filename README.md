@@ -11,4 +11,4 @@ npm run build               # production build → _site/
 
 See `CLAUDE.md` for post format, conventions and where things live. In Claude Code, `/new-post` writes a full article from your notes.
 
-Deploy: connect the repo to Netlify (config in `netlify.toml`), Cloudflare Pages or Vercel with build command `npm run build` and output `_site`. Set your domain in `src/_data/site.js`.
+Deploy: connect the repo to Netlify (config in `netlify.toml`), Cloudflare Pages or Vercel with build command `npm run build` and output `_site`. The domain (`https://scottanderson.com.au`) is set in `src/_data/site.js`.

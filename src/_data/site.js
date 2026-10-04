@@ -1,9 +1,9 @@
-// Site-wide settings. Update `url` to your real domain before deploying:
-// it is used for canonical links, Open Graph, the sitemap, feed and structured data.
+// Site-wide settings. `url` is used for canonical links, Open Graph, the sitemap,
+// feed and structured data.
 export default {
-	url: process.env.URL || "https://example.com",
+	url: "https://scottanderson.com.au",
 	title: "Scott Anderson",
-	tagline: "Dispatches on software, startups & the AI era",
+	tagline: "100% human written dispatches on software, startups & the AI era",
 	description:
 		"Scott Anderson writes about building software, running startups and staying useful at work in the age of AI. Product engineer and co-founder based in Melbourne, Australia.",
 	language: "en-AU",
