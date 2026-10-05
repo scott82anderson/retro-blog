@@ -6,6 +6,7 @@ pagination:
   data: collections.posts
   size: 10
   alias: posts
+  generatePageOnEmptyData: true
 permalink: "{% if pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber + 1 }}/{% else %}/{% endif %}"
 eleventyComputed:
   title: "{% if pagination.pageNumber > 0 %}Back issues, page {{ pagination.pageNumber + 1 }}{% endif %}"
@@ -15,7 +16,7 @@ eleventyComputed:
 {%- if not posts.length %}
 <section class="empty">
 	<h2>Nothing in this issue yet</h2>
-	<p>The first article is on its way. Run <code>npm run new "My first post"</code> to write it.</p>
+	<p>The first article is on its way.</p>
 </section>
 {%- else %}
 
