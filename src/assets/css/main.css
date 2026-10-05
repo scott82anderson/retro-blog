@@ -137,7 +137,7 @@ main:focus { outline: none; }
 	position: relative;
 	display: grid;
 	grid-template-columns: 1fr auto;
-	grid-template-areas: "title stripes" "tagline stripes";
+	grid-template-areas: "title art" "tagline art";
 	align-items: end;
 	column-gap: 2rem;
 	padding-block: 1.25rem 1rem;
@@ -164,7 +164,28 @@ main:focus { outline: none; }
 	font-family: var(--font-display); font-weight: 600; font-size: var(--step--1);
 	color: var(--muted);
 }
-.masthead .stripes { grid-area: stripes; width: 9rem; height: 3.5rem; align-self: center; overflow: hidden; }
+/* Arcade-cabinet art: asteroids and a ship, framed like the side of a 1980s coin-op */
+.masthead__art {
+	grid-area: art; width: 9rem; height: 3.5rem; align-self: center;
+	border: var(--rule); padding: 3px; background: var(--orange); box-shadow: var(--shadow-sm);
+}
+.masthead__art svg { display: block; width: 100%; height: 100%; border: 3px solid var(--red); background: var(--ink); }
+.masthead__art .a-space { fill: oklch(0.44 0.17 262); }
+.masthead__art .a-deep { fill: oklch(0.3 0.14 265); }
+.masthead__art .a-void { fill: var(--ink); }
+.masthead__art .a-rock { fill: var(--yellow); }
+.masthead__art .a-rock-shade { fill: oklch(0.75 0.15 78); }
+.masthead__art .a-crater { fill: oklch(0.6 0.13 65); stroke: var(--ink); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.masthead__art .a-white { fill: oklch(0.99 0 0); }
+.masthead__art .a-grey { fill: oklch(0.8 0.015 260); }
+.masthead__art .a-red { fill: var(--red); }
+.masthead__art .a-orange { fill: var(--orange); }
+.masthead__art .a-glass { fill: oklch(0.32 0.12 262); }
+.masthead__art .a-trail { fill: var(--yellow); opacity: 0.3; }
+.masthead__art .a-trail-core { fill: oklch(0.99 0 0); opacity: 0.45; }
+.masthead__art .a-line { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.masthead__art .a-thin { stroke-width: 1; }
+.masthead__art .a-ring { stroke: var(--yellow); stroke-width: 1.5; }
 
 .masthead--cover { padding-block: clamp(1.5rem, 4vw, 3rem) 1.5rem; }
 .masthead--cover .masthead__title {
@@ -173,7 +194,7 @@ main:focus { outline: none; }
 }
 .masthead--cover .masthead__accent { display: block; }
 .masthead--cover .masthead__tagline { font-size: clamp(1rem, 0.85rem + 0.6vw, 1.35rem); color: var(--ink); margin-top: 1rem; }
-.masthead--cover .stripes { width: clamp(6rem, 18vw, 15rem); height: clamp(7rem, 20vw, 12rem); align-self: end; }
+.masthead--cover .masthead__art { width: clamp(7rem, 18vw, 15rem); height: clamp(6rem, 15vw, 12rem); align-self: end; box-shadow: var(--shadow); }
 
 /* Price flash: the starburst every cover had */
 .masthead__flash {
@@ -607,14 +628,9 @@ li:nth-child(even) > .sticker { transform: rotate(1.25deg); }
 .site-footer__legal { font: 0.75rem/1.5 var(--font-pixel); color: oklch(1 0 0 / 0.72); padding-block: 1rem 2rem; border-top: 1px solid oklch(1 0 0 / 0.2); }
 
 /* ---------- Motion ---------- */
-@keyframes stripe-in { from { transform: skewX(-32deg) translateY(110%); } to { transform: skewX(-32deg) translateY(0); } }
+@keyframes ship-in { from { transform: translate(-40px, 30px); opacity: 0; } to { transform: none; opacity: 1; } }
 @keyframes flash-in { from { transform: rotate(-90deg) scale(0.4); opacity: 0; } to { transform: rotate(12deg) scale(1); opacity: 1; } }
-.masthead--cover .stripes { overflow: hidden; }
-.masthead--cover .stripes span { animation: stripe-in 650ms var(--ease-out) both; }
-.masthead--cover .stripes span:nth-child(2) { animation-delay: 60ms; }
-.masthead--cover .stripes span:nth-child(3) { animation-delay: 120ms; }
-.masthead--cover .stripes span:nth-child(4) { animation-delay: 180ms; }
-.masthead--cover .stripes span:nth-child(5) { animation-delay: 240ms; }
+.masthead--cover .masthead__ship { animation: ship-in 900ms var(--ease-out) 150ms both; }
 
 @media (prefers-reduced-motion: reduce) {
 	*, *::before, *::after { animation-duration: 1ms !important; animation-delay: 0ms !important; transition-duration: 1ms !important; scroll-behavior: auto !important; }
@@ -641,9 +657,9 @@ li:nth-child(even) > .sticker { transform: rotate(1.25deg); }
 	.entry__image { grid-column: 1 / -1; grid-row: 1; }
 	.entry__image img { aspect-ratio: 16 / 9; }
 	.masthead { grid-template-columns: 1fr; grid-template-areas: "title" "tagline"; }
-	.masthead .stripes { display: none; }
-	.masthead--cover { grid-template-columns: 1fr auto; grid-template-areas: "title title" "tagline stripes"; }
-	.masthead--cover .stripes { display: flex; width: 5.5rem; height: 4rem; }
+	.masthead__art { display: none; }
+	.masthead--cover { grid-template-columns: 1fr auto; grid-template-areas: "title title" "tagline art"; }
+	.masthead--cover .masthead__art { display: block; width: 6rem; height: 5rem; box-shadow: var(--shadow-sm); }
 	.masthead__flash { display: none; }
 	.topbar__issue .topbar__date { display: none; }
 	.topbar__search input { width: 8.5rem; }
