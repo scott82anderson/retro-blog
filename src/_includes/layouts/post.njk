@@ -22,14 +22,18 @@ bodyClass: is-post
 		</p>
 	</header>
 
-	{%- if coverSrc %}
-	<figure class="post__cover{% if imageSize == 'narrow' %} post__cover--narrow{% endif %}">
-		<img src="{{ coverSrc }}" alt="{{ imageAlt }}" loading="eager" fetchpriority="high" sizes="{% if imageSize == 'narrow' %}(min-width: 38rem) 36rem{% else %}(min-width: 75rem) 72rem{% endif %}, 100vw" data-pagefind-meta="image[src], image_alt[alt]">
+	{#- Narrow covers sit inside the body grid, beside the key points; wide ones span the page above it. -#}
+	{%- set narrowCover = coverSrc and imageSize == 'narrow' %}
+	{%- set coverFigure %}
+	<figure class="post__cover{% if narrowCover %} post__cover--narrow{% endif %}">
+		<img src="{{ coverSrc }}" alt="{{ imageAlt }}" loading="eager" fetchpriority="high" sizes="{% if narrowCover %}(min-width: 38rem) 36rem{% else %}(min-width: 75rem) 72rem{% endif %}, 100vw" data-pagefind-meta="image[src], image_alt[alt]">
 		{%- if imageCaption %}<figcaption>{{ imageCaption }}</figcaption>{% endif %}
 	</figure>
-	{%- endif %}
+	{%- endset %}
+	{%- if coverSrc and not narrowCover %}{{ coverFigure | safe }}{% endif %}
 
 	<div class="post__body">
+		{%- if narrowCover %}{{ coverFigure | safe }}{% endif %}
 		{%- if summary %}
 		<aside class="tldr" aria-labelledby="tldr-heading">
 			<h2 id="tldr-heading" class="tldr__title">Key points</h2>

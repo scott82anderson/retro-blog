@@ -421,10 +421,11 @@ li:nth-child(even) > .sticker { transform: rotate(1.25deg); }
 .post__body {
 	display: grid;
 	grid-template-columns: minmax(0, var(--measure)) minmax(15rem, 20rem);
-	grid-template-areas: "prose tldr" "faq tldr" "footer tldr";
+	grid-template-areas: "cover tldr" "prose tldr" "faq tldr" "footer tldr";
 	column-gap: clamp(2rem, 5vw, 4.5rem);
 	align-items: start;
 }
+.post__body > .post__cover { grid-area: cover; }
 .post__body > .prose { grid-area: prose; }
 .post__body > .faq { grid-area: faq; }
 .post__body > .post__footer { grid-area: footer; }
@@ -639,7 +640,7 @@ li:nth-child(even) > .sticker { transform: rotate(1.25deg); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 64rem) {
-	.post__body { grid-template-columns: minmax(0, 1fr); grid-template-areas: "tldr" "prose" "faq" "footer"; }
+	.post__body { grid-template-columns: minmax(0, 1fr); grid-template-areas: "cover" "tldr" "prose" "faq" "footer"; }
 	.post__body > .tldr { position: static; max-width: var(--measure); }
 	.masthead__flash { right: clamp(5rem, 22vw, 12rem); }
 }
