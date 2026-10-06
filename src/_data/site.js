@@ -38,6 +38,8 @@ export default {
 		{ label: "About", url: "/about/" },
 	],
 	postsPerPage: 10,
+	// Google Analytics 4 measurement ID ("G-…"). Empty disables it; it only loads in production builds.
+	gaId: "G-D9PEJH8SEE",
 	// Giscus: post comments stored as GitHub Discussions in the "Comments" category.
 	comments: {
 		repo: "scott82anderson/retro-blog",
