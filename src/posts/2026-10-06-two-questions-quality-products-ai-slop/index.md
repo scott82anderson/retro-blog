@@ -3,6 +3,8 @@ title: "The two questions that separate quality products from AI slop"
 description: "AI makes building software easy, but quality still depends on two human questions: what do we build next, and how will it work? Here's how to answer both."
 date: 2026-10-06
 tags: [ai, product, ux]
+image: ./ai-slop-to-quality-bridge.png
+imageAlt: "Illustration of a rope bridge spanning a deep chasm, from a cliff labelled \"AI-slop product\" to one labelled \"Quality product\". The first half of the bridge is labelled \"PMF: what to build\" and the second half \"UX: how it works\"."
 summary:
   - "AI tools have made it possible for nearly anyone to build software products, but the skills required to build a quality product are mostly unchanged, and necessarily human."
   - "Two questions need to be answered well, and answered continuously: what do we build next, and how will it work?"

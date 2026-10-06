@@ -3,7 +3,7 @@
 export default {
 	url: "https://scottanderson.com.au",
 	title: "Scott Anderson",
-	tagline: "100% human written dispatches on software, startups & the AI era",
+	tagline: "100% human written dispatches on product development, startups & the AI era",
 	description:
 		"Scott Anderson writes about building software, running startups and staying useful at work in the age of AI. Product engineer and co-founder based in Melbourne, Australia.",
 	language: "en-AU",
