@@ -18,6 +18,7 @@ export default {
 			"Scott is a product engineer and co-founder in Melbourne who has been building web software since 2002. He co-founded Floats.ai and Sirius.dev, and wrote Future Proof: The White-Collar Worker's Guide to the AI Era.",
 		sameAs: [
 			"https://www.linkedin.com/in/scott82anderson/",
+			"https://github.com/scott82anderson",
 			"https://www.thefutureproofbook.com/",
 		],
 		worksFor: [
@@ -27,6 +28,7 @@ export default {
 	},
 	links: {
 		linkedin: "https://www.linkedin.com/in/scott82anderson/",
+		github: "https://github.com/scott82anderson",
 		book: "https://www.thefutureproofbook.com/",
 	},
 	nav: [
