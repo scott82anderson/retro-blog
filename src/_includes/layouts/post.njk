@@ -23,8 +23,8 @@ bodyClass: is-post
 	</header>
 
 	{%- if coverSrc %}
-	<figure class="post__cover">
-		<img src="{{ coverSrc }}" alt="{{ imageAlt }}" loading="eager" fetchpriority="high" sizes="(min-width: 75rem) 72rem, 100vw" data-pagefind-meta="image[src], image_alt[alt]">
+	<figure class="post__cover{% if imageSize == 'narrow' %} post__cover--narrow{% endif %}">
+		<img src="{{ coverSrc }}" alt="{{ imageAlt }}" loading="eager" fetchpriority="high" sizes="{% if imageSize == 'narrow' %}(min-width: 38rem) 36rem{% else %}(min-width: 75rem) 72rem{% endif %}, 100vw" data-pagefind-meta="image[src], image_alt[alt]">
 		{%- if imageCaption %}<figcaption>{{ imageCaption }}</figcaption>{% endif %}
 	</figure>
 	{%- endif %}

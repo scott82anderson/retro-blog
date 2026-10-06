@@ -415,6 +415,7 @@ li:nth-child(even) > .sticker { transform: rotate(1.25deg); }
 .post__byline a { color: inherit; }
 .post__cover { margin: 0 0 clamp(2rem, 5vw, 3rem); border: 4px solid var(--ink); box-shadow: 10px 10px 0 var(--ink); background: var(--ink); }
 .post__cover img { width: 100%; }
+.post__cover--narrow { max-width: 36rem; }
 .post__cover figcaption { font: 0.8125rem/1.4 var(--font-pixel); color: var(--bg); padding: 0.6rem 0.8rem; }
 
 .post__body {

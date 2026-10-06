@@ -24,6 +24,7 @@ tags: [ai, careers]          # lowercase; reuse existing tags
 image: ./cover.png           # optional cover; also becomes the og:image (1200px JPEG)
 imageAlt: "..."              # required if image is set
 imageCaption: "..."          # optional
+imageSize: narrow            # optional: cap the cover at 36rem (for square/portrait images)
 summary: ["...", "..."]      # optional "Key points" boxout (AEO)
 faq: [{ q: "...", a: "..." }] # optional visible Q&A + FAQPage JSON-LD
 draft: true                  # optional: hidden from production builds
