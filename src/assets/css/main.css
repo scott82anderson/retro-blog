@@ -421,7 +421,7 @@ li:nth-child(even) > .sticker { transform: rotate(1.25deg); }
 .post__body {
 	display: grid;
 	grid-template-columns: minmax(0, var(--measure)) minmax(15rem, 20rem);
-	grid-template-areas: "cover tldr" "prose tldr" "faq tldr" "footer tldr";
+	grid-template-areas: "cover tldr" "prose tldr" "faq tldr" "footer tldr" "comments tldr";
 	column-gap: clamp(2rem, 5vw, 4.5rem);
 	align-items: start;
 }
@@ -429,6 +429,7 @@ li:nth-child(even) > .sticker { transform: rotate(1.25deg); }
 .post__body > .prose { grid-area: prose; }
 .post__body > .faq { grid-area: faq; }
 .post__body > .post__footer { grid-area: footer; }
+.post__body > .comments { grid-area: comments; }
 .post__body > .tldr { grid-area: tldr; position: sticky; top: 1.5rem; }
 
 /* Key points boxout */
@@ -536,6 +537,10 @@ li:nth-child(even) > .sticker { transform: rotate(1.25deg); }
 .author-box__name a:hover { text-decoration: underline; }
 .author-box p:last-child { font-size: 1rem; line-height: 1.55; }
 
+/* Comments (Giscus iframe) */
+.comments { margin-top: 3rem; padding-top: 0.6rem; border-top: var(--rule-heavy); }
+.comments > h2 { font-weight: 900; font-stretch: 125%; font-variation-settings: "wdth" 125; text-transform: uppercase; font-size: var(--step-2); margin-bottom: 1.25rem; }
+
 .post-nav {
 	display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.25rem;
 	padding-block: clamp(2.5rem, 6vw, 4rem);
@@ -640,7 +645,7 @@ li:nth-child(even) > .sticker { transform: rotate(1.25deg); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 64rem) {
-	.post__body { grid-template-columns: minmax(0, 1fr); grid-template-areas: "cover" "tldr" "prose" "faq" "footer"; }
+	.post__body { grid-template-columns: minmax(0, 1fr); grid-template-areas: "cover" "tldr" "prose" "faq" "footer" "comments"; }
 	.post__body > .tldr { position: static; max-width: var(--measure); }
 	.masthead__flash { right: clamp(5rem, 22vw, 12rem); }
 }

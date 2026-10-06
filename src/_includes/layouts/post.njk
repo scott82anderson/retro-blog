@@ -66,6 +66,10 @@ bodyClass: is-post
 			{% include "partials/tags.njk" %}
 			{% include "partials/author-box.njk" %}
 		</footer>
+
+		{%- if site.comments and comments !== false %}
+		{% include "partials/comments.njk" %}
+		{%- endif %}
 	</div>
 </article>
 

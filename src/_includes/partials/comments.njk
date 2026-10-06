@@ -1,0 +1,19 @@
+<section class="comments" id="comments" aria-labelledby="comments-heading" data-pagefind-ignore>
+	<h2 id="comments-heading">Comments</h2>
+	<script src="https://giscus.app/client.js"
+		data-repo="{{ site.comments.repo }}"
+		data-repo-id="{{ site.comments.repoId }}"
+		data-category="{{ site.comments.category }}"
+		data-category-id="{{ site.comments.categoryId }}"
+		data-mapping="pathname"
+		data-strict="1"
+		data-reactions-enabled="1"
+		data-emit-metadata="0"
+		data-input-position="top"
+		data-theme="light"
+		data-lang="en"
+		data-loading="lazy"
+		crossorigin="anonymous"
+		async></script>
+	<noscript><p>Comments need JavaScript. You can also <a href="https://github.com/{{ site.comments.repo }}/discussions/categories/comments">join the discussion on GitHub</a>.</p></noscript>
+</section>

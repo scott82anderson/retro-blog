@@ -28,6 +28,7 @@ imageSize: narrow            # optional: cap the cover at 36rem (for square/port
 summary: ["...", "..."]      # optional "Key points" boxout (AEO)
 faq: [{ q: "...", a: "..." }] # optional visible Q&A + FAQPage JSON-LD
 draft: true                  # optional: hidden from production builds
+comments: false              # optional: hide the Giscus comments section
 ```
 
 Rules enforced by the build: every Markdown image needs alt text; `image` needs `imageAlt`.

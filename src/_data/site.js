@@ -36,4 +36,11 @@ export default {
 		{ label: "About", url: "/about/" },
 	],
 	postsPerPage: 10,
+	// Giscus: post comments stored as GitHub Discussions in the "Comments" category.
+	comments: {
+		repo: "scott82anderson/retro-blog",
+		repoId: "R_kgDOU71aug",
+		category: "Comments",
+		categoryId: "DIC_kwDOU71aus4DHJ4M",
+	},
 };
